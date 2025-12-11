@@ -1,0 +1,106 @@
+.card {
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-outfit);
+    font-weight: 700;
+    border-bottom: 1px solid var(--divider);
+    padding-bottom: 0.75rem;
+}
+
+.id {
+    font-size: 1.1rem;
+    color: var(--text-main);
+}
+
+.time {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.status {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+}
+
+.itemHeader {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 1rem;
+}
+
+.quantity {
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.productName {
+    color: var(--text-main);
+}
+
+.modifiers {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-left: 1.5rem;
+    /* Indent under product name */
+    margin-top: 0.2rem;
+}
+
+.total {
+    font-weight: 700;
+    text-align: right;
+    font-size: 1.1rem;
+    font-family: var(--font-outfit);
+    margin-top: auto;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--divider);
+}
+
+.actions {
+    margin-top: 0.5rem;
+}
+
+.actionButton {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 12px;
+    font-weight: 600;
+    background: var(--primary);
+    color: var(--primary-foreground);
+    font-size: 1rem;
+    transition: opacity 0.2s;
+}
+
+.actionButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.actionButton:hover:not(:disabled) {
+    opacity: 0.9;
+}

@@ -31,5 +31,47 @@ export async function placeOrder(items: CartItem[]) {
         }
     });
 
+
     return order.id;
+}
+
+export async function updateOrderStatus(orderId: number, status: string) {
+    await prisma.order.update({
+        where: { id: orderId },
+        data: { status }
+    });
+    // revalidatePath('/admin'); 
+}
+
+export async function fetchActiveOrders() {
+    return await prisma.order.findMany({
+        where: {
+            status: { notIn: ['COMPLETED', 'ARCHIVED'] }
+        },
+        include: {
+            items: {
+                include: {
+                    product: true,
+                    modifiers: { include: { modifier: true } }
+                }
+            }
+        },
+        orderBy: {
+            createdAt: 'asc'
+        }
+    });
+}
+
+export async function fetchOrder(orderId: number) {
+    return await prisma.order.findUnique({
+        where: { id: orderId },
+        include: {
+            items: {
+                include: {
+                    product: true,
+                    modifiers: { include: { modifier: true } }
+                }
+            }
+        }
+    });
 }
