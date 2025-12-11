@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import styles from './ProductItem.module.css';
 import { ProductWithModifiers, useStore } from '@/store/useStore';
 
@@ -12,7 +13,16 @@ export default function ProductItem({ product }: ProductItemProps) {
 
     return (
         <button className={styles.card} onClick={() => openProductModal(product)}>
-            <div className={styles.image} />
+
+            <div className={styles.image}>
+                <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    sizes="(max-width: 768px) 100px, 100px"
+                    style={{ objectFit: 'cover' }}
+                />
+            </div>
             <div className={styles.info}>
                 <div>
                     <h3 className={styles.name}>{product.name}</h3>

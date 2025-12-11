@@ -1,4 +1,5 @@
 import { prisma } from '@/lib/prisma';
+import Image from 'next/image';
 import Header from '@/components/Header';
 import styles from './page.module.css';
 import ProductItem from '@/components/Menu/ProductItem';
@@ -25,7 +26,14 @@ export default async function Home() {
 
       <div className="container">
         <div className={styles.hero}>
-          <h1>BurgerLokal</h1>
+          <Image
+            src="/logo.png"
+            alt="BurgerLokal"
+            width={220}
+            height={80}
+            priority
+            className={styles.heroLogo}
+          />
           <p>Premium Smash Burgers & Sides</p>
         </div>
 

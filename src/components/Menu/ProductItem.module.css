@@ -1,57 +1,79 @@
 .card {
-    background: var(--surface);
-    border-radius: var(--radius);
+    background: transparent;
     overflow: hidden;
     display: flex;
     flex-direction: row;
-    padding: 1rem;
-    gap: 1rem;
-    border: 1px solid var(--divider);
+    padding: 1rem 0;
+    gap: 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     cursor: pointer;
-    transition: transform 0.2s, border-color 0.2s;
-    text-align: left;
     width: 100%;
+    transition: all 0.2s ease;
+    align-items: center;
+    text-align: left;
+    /* Ensure text aligns left */
+}
+
+.card:last-child {
+    border-bottom: none;
 }
 
 .card:hover {
-    transform: translateY(-2px);
-    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.02);
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 12px;
+    border-bottom-color: transparent;
 }
 
+/* Restored Image Container */
 .image {
-    width: 80px;
-    height: 80px;
-    border-radius: 8px;
-    object-fit: cover;
+    width: 90px;
+    height: 90px;
+    border-radius: 12px;
     background-color: var(--surface-highlight);
     flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* Restored Info Container */
 .info {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 0.25rem;
+    min-width: 0;
+    /* Fix flex child overflow */
 }
 
 .name {
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1.1rem;
-    margin-bottom: 0.25rem;
     color: var(--text-main);
+    font-family: var(--font-outfit);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .desc {
-    font-size: 0.875rem;
+    font-size: 0.85rem;
+    line-height: 1.4;
     color: var(--text-muted);
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
 .price {
-    font-weight: 700;
+    font-weight: 600;
     color: var(--primary);
-    margin-top: 0.5rem;
+    font-size: 1rem;
+    margin-top: 0.25rem;
+    font-family: var(--font-outfit);
 }

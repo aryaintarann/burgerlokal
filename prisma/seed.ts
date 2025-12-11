@@ -33,7 +33,7 @@ async function main() {
             name: 'Classic Burger',
             description: 'Juicy beef patty with fresh lettuce, tomato, and our secret sauce.',
             price: 35000,
-            image: '/images/classic-burger.jpg',
+            image: '/images/classic-burger.png',
             categoryId: catBurgers.id,
             modifiers: {
                 connect: [
@@ -52,7 +52,7 @@ async function main() {
             name: 'Cheeseburger Deluxe',
             description: 'Classic burger with melted cheddar cheese and caramelized onions.',
             price: 45000,
-            image: '/images/cheeseburger.jpg',
+            image: '/images/cheeseburger.png',
             categoryId: catBurgers.id,
             modifiers: {
                 connect: [
@@ -71,7 +71,7 @@ async function main() {
             name: 'Double Trouble',
             description: 'Two beef patties, double cheese, and double the flavor.',
             price: 65000,
-            image: '/images/double-burger.jpg',
+            image: '/images/double-burger.png',
             categoryId: catBurgers.id,
             modifiers: {
                 connect: [
@@ -91,7 +91,7 @@ async function main() {
             name: 'Golden Fries',
             description: 'Crispy salted french fries.',
             price: 20000,
-            image: '/images/fries.jpg',
+            image: '/images/fries.png',
             categoryId: catSides.id,
             modifiers: {
                 connect: [
@@ -106,7 +106,7 @@ async function main() {
             name: 'Onion Rings',
             description: 'Battered and fried onion rings with dipping sauce.',
             price: 25000,
-            image: '/images/onion-rings.jpg',
+            image: '/images/onion-rings.png',
             categoryId: catSides.id,
             modifiers: {
                 connect: [
@@ -122,7 +122,7 @@ async function main() {
             name: 'Cola',
             description: 'Iced cold cola.',
             price: 15000,
-            image: '/images/cola.jpg',
+            image: '/images/cola.png',
             categoryId: catDrinks.id
         }
     })
@@ -132,7 +132,7 @@ async function main() {
             name: 'Lemonade',
             description: 'Freshly squeezed lemonade.',
             price: 18000,
-            image: '/images/lemonade.jpg',
+            image: '/images/lemonade.png',
             categoryId: catDrinks.id
         }
     })

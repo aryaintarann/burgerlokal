@@ -8,6 +8,9 @@ const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 export const metadata: Metadata = {
   title: "BurgerLokal",
   description: "Premium Burgers, Local Taste.",
+  icons: {
+    icon: '/favicon.png',
+  },
 };
 
 export default function RootLayout({
