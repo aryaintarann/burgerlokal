@@ -5,11 +5,12 @@ import Link from 'next/link';
 export const revalidate = 0; // Dynamic status
 
 interface Props {
-    params: { id: string }
+    params: Promise<{ id: string }>
 }
 
 export default async function OrderPage({ params }: Props) {
-    const orderId = parseInt(params.id);
+    const { id } = await params;
+    const orderId = parseInt(id);
 
     const order = await prisma.order.findUnique({
         where: { id: orderId },
@@ -60,7 +61,7 @@ export default async function OrderPage({ params }: Props) {
 
                     <div style={{ marginTop: '2rem', textAlign: 'left', borderTop: '1px solid var(--divider)', paddingTop: '1rem' }}>
                         <h3>Summary</h3>
-                        {order.items.map(item => (
+                        {order.items.map((item: any) => (
                             <div key={item.id} style={{ display: 'flex', justifyContent: 'space-between', margin: '0.5rem 0' }}>
                                 <span>{item.quantity}x {item.product.name}</span>
                                 <span>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(item.price * item.quantity)}</span>

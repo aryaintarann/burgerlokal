@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import styles from './CustomizationModal.module.css';
 import { useStore } from '@/store/useStore';
 import { X, Check } from 'lucide-react';
-import { Modifier } from '@prisma/client';
+import type { Modifier } from '@prisma/client';
 
 export default function CustomizationModal() {
     const { selectedProduct, isModalOpen, closeProductModal, addToCart } = useStore();
@@ -68,7 +68,7 @@ export default function CustomizationModal() {
                         <div className={styles.modifiersSection}>
                             <h3 className={styles.sectionTitle}>Customization</h3>
                             <div className={styles.modifierList}>
-                                {selectedProduct.modifiers.map(mod => {
+                                {selectedProduct.modifiers.map((mod: Modifier) => {
                                     const isActive = selectedModifiers.some(m => m.id === mod.id);
                                     return (
                                         <div
