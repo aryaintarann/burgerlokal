@@ -1,141 +1,96 @@
-.page {
-  --background: #fafafa;
-  --foreground: #fff;
-
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
-  display: flex;
-  min-height: 100vh;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
-}
-
 .main {
-  display: flex;
   min-height: 100vh;
-  width: 100%;
-  max-width: 800px;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
+  padding-bottom: 80px;
+  /* Space for fixed elements if any or bottom scrolling */
 }
 
-.intro {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
+.hero {
+  padding: 2rem 1rem;
+  text-align: center;
 }
 
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
+.hero h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
 }
 
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
+.hero p {
+  color: var(--text-muted);
 }
 
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
+.categorySection {
+  margin-bottom: 2rem;
 }
 
-.ctas {
+.categoryTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+  position: sticky;
+  top: 64px;
+  /* Header height */
+  background: var(--background);
+  z-index: 40;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+.productCard {
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
   display: flex;
   flex-direction: row;
-  width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
+  /* Horizontal cards for mobile list view usually work better or block? */
+  /* Let's do horizontal for mobile list feeling */
+  padding: 1rem;
+  gap: 1rem;
+  border: 1px solid var(--divider);
 }
 
-.ctas a {
+/* Let's stick to vertical card for "Instagram" feel or horizontal? */
+/* Horizontal is better for "Menu List" */
+.productImage {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+  background-color: var(--surface-highlight);
+  flex-shrink: 0;
+}
+
+.productInfo {
+  flex: 1;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
-  cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
+.productName {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
+.productDesc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
-}
-
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
-  }
-
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
-
-  .page {
-    --background: #000;
-    --foreground: #000;
-
-    --text-primary: #ededed;
-    --text-secondary: #999;
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
-  }
+.productPrice {
+  font-weight: 700;
+  color: var(--primary);
+  margin-top: 0.5rem;
 }

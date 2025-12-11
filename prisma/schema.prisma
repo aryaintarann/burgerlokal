@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String
+  sortOrder Int      @default(0)
+  products Product[]
+}
+
+model Product {
+  id          Int        @id @default(autoincrement())
+  name        String
+  description String
+  price       Float
+  image       String     // URL or path
+  categoryId  Int
+  category    Category   @relation(fields: [categoryId], references: [id])
+  modifiers   Modifier[]
+  
+  orderItems  OrderItem[]
+}
+
+model Modifier {
+  id        Int     @id @default(autoincrement())
+  name      String
+  price     Float   // 0 for removals or free additions
+  isDefault Boolean @default(false) // If true, it's pre-selected (not used in this simple logic maybe, but good to have)
+  
+  // Implicit many-to-many with Product to allow reusing "Extra Cheese" across all burgers
+  products  Product[] 
+
+  orderItemModifiers OrderItemModifier[]
+}
+
+model Order {
+  id        Int         @id @default(autoincrement())
+  createdAt DateTime    @default(now())
+  status    String      // RECEIVED, COOKING, READY, COMPLETED
+  total     Float
+  items     OrderItem[]
+}
+
+model OrderItem {
+  id        Int       @id @default(autoincrement())
+  orderId   Int
+  order     Order     @relation(fields: [orderId], references: [id])
+  productId Int
+  product   Product   @relation(fields: [productId], references: [id])
+  quantity  Int
+  price     Float     // Snapshot of price at order time (base + modifiers)
+  
+  modifiers OrderItemModifier[]
+}
+
+model OrderItemModifier {
+  id          Int       @id @default(autoincrement())
+  orderItemId Int
+  orderItem   OrderItem @relation(fields: [orderItemId], references: [id])
+  modifierId  Int
+  modifier    Modifier  @relation(fields: [modifierId], references: [id])
+  price       Float     // Snapshot of modifier price
+}

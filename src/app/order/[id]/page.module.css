@@ -1,0 +1,89 @@
+.main {
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    background: var(--background);
+}
+
+.card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--divider);
+}
+
+.orderId {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+}
+
+.status {
+    font-family: var(--font-outfit);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 2rem;
+}
+
+.steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.steps::before {
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--divider);
+    z-index: 0;
+}
+
+.step {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--surface);
+    /* Mask line */
+    padding: 0 0.5rem;
+}
+
+.stepDot {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--surface-highlight);
+    border: 2px solid var(--divider);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.step.active .stepDot {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--primary-foreground);
+}
+
+.stepLabel {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.step.active .stepLabel {
+    color: var(--text-main);
+}
